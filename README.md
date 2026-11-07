@@ -1,4 +1,4 @@
-# Font Viewer & Font Preview (TTF, OTF, WOFF)
+# Font Viewer, TTF Viewer, OTF & WOFF Viewer
 
 Open any TTF, OTF, WOFF, WOFF2 or TTC font in VS Code to test text with its variable axes and OpenType features, see every glyph, and read its license before you ship it.
 

@@ -1,7 +1,7 @@
 {
   "name": "font-viewer-vscode",
-  "displayName": "Font Viewer & Font Preview (TTF, OTF, WOFF)",
-  "description": "Open TTF, OTF, WOFF, WOFF2 and TTC fonts in VS Code. See every glyph, test sample text with variable axes and OpenType features, and read the license.",
+  "displayName": "Font Viewer, TTF Viewer, OTF & WOFF Viewer",
+  "description": "Font viewer for TTF, OTF, WOFF, WOFF2 and TTC fonts in VS Code. See every glyph, test sample text with variable axes and OpenType features, and read the license.",
   "version": "0.1.0",
   "publisher": "zovo",
   "license": "MIT",
@@ -19,9 +19,12 @@
     "Other"
   ],
   "keywords": [
-    "font",
     "font viewer",
+    "ttf viewer",
+    "otf viewer",
+    "woff viewer",
     "font preview",
+    "font",
     "ttf",
     "otf",
     "woff",
@@ -45,10 +48,7 @@
     "icon font",
     "iconfont",
     "font license",
-    "web fonts",
-    "preview",
-    "offline",
-    "no telemetry"
+    "web fonts"
   ],
   "main": "./dist/extension.js",
   "activationEvents": [],

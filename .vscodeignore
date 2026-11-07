@@ -1,0 +1,17 @@
+src/**
+test/**
+scripts/**
+samples/**
+node_modules/**
+e2e-tmp/**
+**/*.map
+icon.svg
+.gitignore
+dist/*.vsix
+*.vsix
+package-lock.json
+.github/**
+images/glyph-grid.png
+images/character-map.png
+images/font-info.png
+images/light-theme.png

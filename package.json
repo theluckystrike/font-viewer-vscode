@@ -1,0 +1,235 @@
+{
+  "name": "font-viewer-vscode",
+  "displayName": "Font Viewer & Font Preview (TTF, OTF, WOFF)",
+  "description": "Open TTF, OTF, WOFF, WOFF2 and TTC fonts in VS Code. See every glyph, test sample text with variable axes and OpenType features, and read the license.",
+  "version": "0.1.0",
+  "publisher": "zovo",
+  "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1B2533",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.90.0",
+    "node": ">=18"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "font",
+    "font viewer",
+    "font preview",
+    "ttf",
+    "otf",
+    "woff",
+    "woff2",
+    "ttc",
+    "truetype",
+    "opentype",
+    "glyph",
+    "glyphs",
+    "character map",
+    "unicode",
+    "variable font",
+    "font axes",
+    "opentype features",
+    "ligatures",
+    "typography",
+    "type tester",
+    "waterfall",
+    "font-face",
+    "css",
+    "icon font",
+    "iconfont",
+    "font license",
+    "web fonts",
+    "preview",
+    "offline",
+    "no telemetry"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": true
+  },
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "fontViewer.editor",
+        "displayName": "Font Viewer",
+        "selector": [
+          {
+            "filenamePattern": "*.ttf"
+          },
+          {
+            "filenamePattern": "*.otf"
+          },
+          {
+            "filenamePattern": "*.woff"
+          },
+          {
+            "filenamePattern": "*.woff2"
+          },
+          {
+            "filenamePattern": "*.ttc"
+          },
+          {
+            "filenamePattern": "*.otc"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "commands": [
+      {
+        "command": "fontViewer.openWith",
+        "title": "Open in Font Viewer",
+        "category": "Font Viewer",
+        "icon": "$(preview)"
+      },
+      {
+        "command": "fontViewer.copyFontFace",
+        "title": "Copy CSS @font-face",
+        "category": "Font Viewer"
+      },
+      {
+        "command": "fontViewer.openWalkthrough",
+        "title": "Get Started",
+        "category": "Font Viewer"
+      },
+      {
+        "command": "fontViewer.supportDeveloper",
+        "title": "Support the developer",
+        "category": "Font Viewer"
+      },
+      {
+        "command": "fontViewer.moreViewers",
+        "title": "More free viewers",
+        "category": "Font Viewer"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "fontViewer.openWith",
+          "when": "resourceFilename =~ /\\.(ttf|otf|woff2?|ttc|otc)$/i",
+          "group": "navigation@10"
+        },
+        {
+          "command": "fontViewer.copyFontFace",
+          "when": "resourceFilename =~ /\\.(ttf|otf|woff2?|ttc|otc)$/i",
+          "group": "6_copypath@9"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Font Viewer",
+      "properties": {
+        "fontViewer.sampleText": {
+          "type": "string",
+          "default": "The quick brown fox jumps over the lazy dog. 0123456789",
+          "description": "Text shown in the type tester and the waterfall when you open a font. You can edit it in the viewer too."
+        },
+        "fontViewer.previewSize": {
+          "type": "number",
+          "default": 48,
+          "minimum": 8,
+          "maximum": 300,
+          "description": "Starting size in pixels of the large sample text."
+        },
+        "fontViewer.maxFileMB": {
+          "type": "number",
+          "default": 64,
+          "minimum": 1,
+          "maximum": 1024,
+          "description": "Largest font file, in MB, that Font Viewer opens. Larger files show a message instead, so VS Code stays responsive."
+        },
+        "fontViewer.askForRating": {
+          "type": "boolean",
+          "default": true,
+          "description": "Ask one time for a Marketplace rating after you have used Font Viewer for a few days. You can answer \"Later\" or \"Don't ask again\". Nothing is sent anywhere."
+        },
+        "fontViewer.showSupportLinks": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the small Sponsor and More free viewers links in the status line of the font view. The change shows in fonts you open next. Nothing is sent anywhere."
+        }
+      }
+    },
+    "walkthroughs": [
+      {
+        "id": "fontViewer.start",
+        "title": "Get started with Font Viewer",
+        "description": "See the glyphs, test text and read the license of any font file.",
+        "steps": [
+          {
+            "id": "open",
+            "title": "Open a font",
+            "description": "Click a .ttf, .otf, .woff, .woff2 or .ttc file in the Explorer. It opens in the type tester with your sample text and a waterfall of sizes.\n[Find a font](command:workbench.action.quickOpen?%5B%22.ttf%22%5D)",
+            "media": {
+              "image": "images/type-tester.png",
+              "altText": "A variable font in Font Viewer with sample text, a waterfall, a weight slider and OpenType feature toggles."
+            },
+            "completionEvents": [
+              "onCommand:workbench.action.quickOpen"
+            ]
+          },
+          {
+            "id": "glyphs",
+            "title": "Browse and copy glyphs",
+            "description": "The Glyphs tab shows every glyph, also the ones with no character, like ligatures and alternates. Search by name, character or U+ code point, then copy the character, the code point or the SVG.",
+            "media": {
+              "markdown": "walkthrough/glyphs.md"
+            }
+          },
+          {
+            "id": "axes",
+            "title": "Try axes and features",
+            "description": "Move the variable axis sliders and turn OpenType features such as liga, kern or ss01 on and off. Copy CSS gives you the matching font-variation-settings and font-feature-settings.",
+            "media": {
+              "markdown": "walkthrough/axes.md"
+            }
+          },
+          {
+            "id": "info",
+            "title": "Check the license and copy @font-face",
+            "description": "The Info tab shows the license, designer, embedding rights and metrics, and a ready @font-face rule with font-weight range and unicode-range.\n[Open settings](command:workbench.action.openSettings?%5B%22fontViewer%22%5D)",
+            "media": {
+              "markdown": "walkthrough/info.md"
+            },
+            "completionEvents": [
+              "onCommand:workbench.action.openSettings"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node scripts/build.js --production",
+    "test": "node scripts/build.js --production && node --test \"test/*.test.js\"",
+    "fixtures": "python3 scripts/make-fixtures.py",
+    "package": "npm run build && npx -y @vscode/vsce package --no-dependencies -o dist/"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "opentype.js": "1.3.4"
+  },
+  "homepage": "https://github.com/theluckystrike/font-viewer-vscode#readme",
+  "bugs": {
+    "url": "https://github.com/theluckystrike/font-viewer-vscode/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theluckystrike/font-viewer-vscode"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/theluckystrike"
+  }
+}
